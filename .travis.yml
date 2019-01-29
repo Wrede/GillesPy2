@@ -1,8 +1,18 @@
-language: python
-python:
-  - "3.5"
-install:
-  - pip install numpy matplotlib seaborn
-script:
-  python test/run_tests.py
+matrix:
+  include:
+    - language: cpp
+      compiler: gcc
+      os: linux
+    - addons:
+      - sources:
+        - ubuntu-toolchain-r-test
+      - packages:
+        g++-7
 
+    - language: python
+      python:
+        - "3.5"
+      install:
+        - pip install numpy matplotlib seaborn
+      script:
+        python test/run_tests.py
