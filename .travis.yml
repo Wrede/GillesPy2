@@ -2,8 +2,12 @@ language: generic
 os: linux
 matrix:
   include:
-    - os: linux
+    - name: "GillesPy2 Unit Tests"
+      os: linux
       env: COMPILER_NAME=gcc CXX=G++-5 CC=gcc-5
+      python: "3.5"
+      install:
+        - pip install numpy matplotlib seaborn
       addons:
         apt:
           packages:
@@ -11,11 +15,5 @@ matrix:
           sources: &sources
             - llvm-toolchain-precise-3.8
             - ubuntu-toolchain-r-test
-
-language: python
-  python:
-    - "3.5"
-  install:
-    - pip install numpy matplotlib seaborn
-  script:
-    python test/run_tests.py
+script:
+  python test/run_tests.py
