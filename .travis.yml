@@ -11,10 +11,11 @@ matrix:
           sources: &sources
             - llvm-toolchain-precise-3.8
             - ubuntu-toolchain-r-test
-      language: python
-        python:
-          - "3.5"
-        install:
-          - pip install numpy matplotlib seaborn
-        script:
-          python test/run_tests.py
+
+language: python
+  python:
+    - "3.5"
+  install:
+    - pip install numpy matplotlib seaborn
+  script:
+    python test/run_tests.py
