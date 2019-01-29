@@ -1,14 +1,17 @@
+language: generic
+os: linux
 matrix:
   include:
-    - language: cpp
-      compiler: gcc
-      os: linux
-    - addons:
-      - sources:
-        - ubuntu-toolchain-r-test
-      - packages:
-        g++-7
-
+    - os: linux
+      env: COMPILER_NAME=gcc CXX=G++-5 CC=gcc-5
+      addons:
+        apt:
+          packages:
+            - g++-5
+          sources: &sources
+            - llvm-toolchain-precise-3.8
+            - ubuntu-toolchain-r-test
+                  
     - language: python
       python:
         - "3.5"
