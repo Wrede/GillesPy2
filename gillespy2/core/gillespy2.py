@@ -410,7 +410,7 @@ class Model(object):
         self.listOfReactions.clear()
 
     def run(self, number_of_trajectories=1, seed=None,
-            solver=None, stochkit_home=None, profile=False, debug=False, show_labels=True):
+            solver=None, stochkit_home=None, profile=False, debug=False, show_labels=True, **kwargs):
         """
         Function calling simulation of the model. There are a number of
         parameters to be set here.
@@ -444,7 +444,7 @@ class Model(object):
                                   seed=seed,
                                   number_of_trajectories=number_of_trajectories,
                                   stochkit_home=stochkit_home, profile=profile, debug=debug,
-                                  show_labels=show_labels)
+                                  show_labels=show_labels, **kwargs)
             else:
                 raise SimulationError(
                     "argument 'solver' to run() must be a subclass of GillesPySolver")
