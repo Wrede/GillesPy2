@@ -3,6 +3,8 @@ import random
 import math
 import numpy as np
 
+class MaxStateReached(Exception):
+    pass
 
 class NumPySSASolver(GillesPySolver):
     name = "NumPySSASolver"
@@ -72,7 +74,7 @@ class NumPySSASolver(GillesPySolver):
                 #Action: terminate
                 if max_state is not None:
                     if np.max(current_state) >= max_state:
-                        raise
+                        raise MaxStateReached("Current state reached maximum allowed theshold  %d" % max_state)
                 # determine next reaction
                 for i in range(number_reactions):
                     propensity_sums[i] = propensity_functions[i](current_state)
